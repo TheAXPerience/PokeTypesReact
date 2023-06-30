@@ -1,38 +1,263 @@
-.App {
-  text-align: center;
+html, body {
+    box-sizing: border-box;
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    background-color: #1616AD;
+    overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-page {
+    box-sizing: border-box;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* HEADER */
+.header-wrapper {
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    flex: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-logo {
+    position: relative;
+    width: auto;
+    height: 128px;
+    margin: 12px auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* FOOTER */
+.footer-wrapper {
+    position: fixed;
+    z-index: 5;
+    bottom: 0px;
+    background-color: #080898;
+    width: 100%;
+    height: 50px;
+    flex: none;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    /* height: calc(100vh - 152px - 50px); */
+    height: 650px;
+}
+
+/* POKEMON QUERYER */
+.query-wrapper {
+    position: sticky;
+    width: 100%;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.query-label, .query-input, .query-button {
+    margin: auto 0px auto 0px;
+}
+
+.query-label {
+    margin-right: 10px;
+    color: white;
+}
+
+.query-input {
+    width: 25%;
+    min-width: 172px;
+    min-height: 24px;
+}
+
+.query-button {
+    min-width: 70px;
+    min-height: 30px;
+    margin-left: 10px;
+    background-color: #DADF56;
+}
+
+/* CAROUSEL */
+
+.error-message {
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: calc(100%);
+}
+
+.carousel-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.carousel-card {
+    position: absolute;
+    border: 2px solid;
+    border-color: #FFFFFF88;
+    border-radius: 5px;
+    background-color: #4848B3;
+    width: 300px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: left 500ms ease-in-out, opacity 500ms linear;
+}
+
+.left-arrow, .right-arrow {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    color: grey;
+    z-index: 1;
+    top: calc(50% - 12px);
+    width: 24px;
+    height: 24px;
+    border: 1px solid grey;
+    text-align: center;
+    line-height: 0;
+    opacity: 0.25;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    opacity: 0.75;
+}
+
+.left-arrow {
+    left: 1rem;
+}
+
+.right-arrow {
+    right: 1rem;
+}
+
+.center-show, .left-show, .right-show {
+    opacity: 1;
+}
+
+.left-hide, .right-hide {
+    opacity: 0;
+}
+
+.center-show {
+    left: calc(50% - 150px);
+}
+
+.left-show, .left-hide {
+    left: calc(-350px);
+}
+
+.right-show, .right-hide {
+    left: calc(105%);
+}
+
+.indicator-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    bottom: 54px;
+}
+
+.indicator {
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    margin: 5px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    opacity: 0.52;
+}
+
+.indicator-idx {
+    opacity: 0.86;
+}
+
+/* POKEMON CARD */
+.pokemon-bio {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pokemon-sprite {
+    width: 144px;
+    height: 144px;
+}
+
+.pokemon-types {
+    height: 144px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.type-label {
+    display: block;
+    height: 20px;
+    width: auto;
+    margin: 4px;
+}
+
+.pokemon-weaknesses {
+    margin: 8px 0px;
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.weakness {
+    position: relative;
+    flex: 0 0 30%;
+    margin: 5px;
+    text-align: center;
+}
+
+.weakness-icon {
+    position: relative;
+    margin: auto;
+    width: 50%;
+    height: auto;
+    opacity: 0.7;
+}
+
+.weakness label {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 10px;
+    margin: auto;
+    font-size: 20px;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white, -1px -1px 0 white;
+}
+
+.weakness-label {
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 25%;
+    width: 50%;
+    height: auto;
+    margin: 0px;
 }
