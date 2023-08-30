@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: api
+    image: 404072719384.dkr.ecr.us-west-2.amazonaws.com/poketypes-backend:latest
+    ports:
+    - "8080:8000"
+    networks:
+      - poketypes
+  nginx:
+    container_name: nginx
+    image: 404072719384.dkr.ecr.us-west-2.amazonaws.com/poketypes-frontend:latest
+    depends_on:
+    - api
+    ports:
+    - "80:80"
+    networks:
+      - poketypes
+
+networks:
+  poketypes:
+
+volumes:
+  poketypes:
